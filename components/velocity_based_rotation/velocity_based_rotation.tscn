@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b56lhohmb2m7q"]
+
+[ext_resource type="Script" uid="uid://bfdmt84a3c7qf" path="res://components/velocity_based_rotation/velocity_based_rotation.gd" id="1_rjuir"]
+
+[node name="VelocityBasedRotation" type="Node" unique_id=1086954631]
+script = ExtResource("1_rjuir")
