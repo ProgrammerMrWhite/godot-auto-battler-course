@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://blh6fvvoj0sn3"]
+
+[ext_resource type="Script" uid="uid://dp1svyh0eq071" path="res://components/unit_grid/unit_grid.gd" id="1_jtwl5"]
+
+[node name="UnitGrid" type="Node2D" unique_id=10334246]
+script = ExtResource("1_jtwl5")

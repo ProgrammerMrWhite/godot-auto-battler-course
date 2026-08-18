@@ -9,7 +9,7 @@ class_name VelocityBasedRotation
 ## 平滑旋转到最大角度时间
 @export_range(0.25,1.5) var lerp_seconds := .4
 ## 旋转角度
-@export var ratation_multiplier := 60
+@export var max_ratation_degrees := 60
 ## 开始旋转的最小速度要求(像素)
 @export var x_velocity_threshold := 3.0
 
@@ -24,7 +24,7 @@ var progress: float
 ## 旋转时长
 var time_elapsed := 0.0
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if not enabled or not target: return
 	
 	velocity = target.global_position - last_position
@@ -32,7 +32,7 @@ func _process(delta: float) -> void:
 	progress = time_elapsed / lerp_seconds
 	
 	if abs(velocity.x) > x_velocity_threshold:
-		angle = velocity.normalized().x * ratation_multiplier * delta
+		angle = velocity.normalized().x * deg_to_rad(max_ratation_degrees)
 	else:
 		angle = 0.0
 	
