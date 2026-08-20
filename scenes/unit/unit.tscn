@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cx1ivjobggp8n" path="res://assets/sprites/rogues.png" id="1_fmv3f"]
 [ext_resource type="Script" uid="uid://d1mnjyxlghgs5" path="res://scenes/unit/unit.gd" id="1_fvc8g"]
-[ext_resource type="Resource" uid="uid://bw8c4c5lt8ani" path="res://data/units/战士.tres" id="2_vh40f"]
+[ext_resource type="Resource" uid="uid://bw8c4c5lt8ani" path="res://data/units/战士.tres" id="2_0wuuu"]
 [ext_resource type="Material" uid="uid://bb8m5fhpi4wqn" path="res://assets/shaders/2d_outline_shader.tres" id="3_3po7s"]
 [ext_resource type="PackedScene" uid="uid://6p2bxcc84x0y" path="res://components/drag_and_drop/drag_and_drop.tscn" id="4_bhlit"]
 [ext_resource type="PackedScene" uid="uid://b56lhohmb2m7q" path="res://components/velocity_based_rotation/velocity_based_rotation.tscn" id="5_vgvef"]
@@ -33,17 +33,18 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.23137255, 0.11372549, 0.09803922, 1)
 
-[node name="Unit" type="Area2D" unique_id=1018564615]
+[node name="Unit" type="Area2D" unique_id=1018564615 groups=["units"]]
 script = ExtResource("1_fvc8g")
-stats = ExtResource("2_vh40f")
+stats = ExtResource("2_0wuuu")
 
 [node name="Visuals" type="CanvasGroup" parent="." unique_id=84884192]
 material = ExtResource("3_3po7s")
 
 [node name="Skin" type="Sprite2D" parent="Visuals" unique_id=1556954142]
 unique_name_in_owner = true
+position = Vector2(16, 0)
 texture = ExtResource("1_fmv3f")
-offset = Vector2(16, 8)
+offset = Vector2(0, 8)
 region_enabled = true
 region_rect = Rect2(32, 96, 32, 32)
 

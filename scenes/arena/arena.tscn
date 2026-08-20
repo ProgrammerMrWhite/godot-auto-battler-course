@@ -5,6 +5,14 @@
 [ext_resource type="Texture2D" uid="uid://mbxv0ayrsu3d" path="res://assets/sprites/star_particle.png" id="2_8trdl"]
 [ext_resource type="PackedScene" uid="uid://nmju18ckpjp0" path="res://scenes/unit/unit.tscn" id="4_aj7ud"]
 [ext_resource type="PackedScene" uid="uid://blh6fvvoj0sn3" path="res://components/unit_grid/unit_grid.tscn" id="4_asdgj"]
+[ext_resource type="Script" uid="uid://u10jxthrd2y8" path="res://components/play_area/play_area.gd" id="4_jx0ua"]
+[ext_resource type="PackedScene" uid="uid://t2qhp7h5ci7i" path="res://components/tile_highlighter/tile_highlighter.tscn" id="6_u52cf"]
+[ext_resource type="Resource" uid="uid://5taogv7rsa6u" path="res://data/units/弓箭手.tres" id="8_6w4xk"]
+[ext_resource type="PackedScene" uid="uid://biw5k2fpwmt7t" path="res://components/unit_mover/unit_mover.tscn" id="8_ii07k"]
+[ext_resource type="Resource" uid="uid://vjevht8i2i3n" path="res://data/units/大剑.tres" id="9_2ml6w"]
+[ext_resource type="PackedScene" uid="uid://wwik5fn4w04b" path="res://components/unit_spawner/unit_spawner.tscn" id="11_xgbxb"]
+[ext_resource type="PackedScene" uid="uid://dtx7rp1xjiqeo" path="res://scenes/sell_portal/sell_portal.tscn" id="12_vmsrg"]
+[ext_resource type="Resource" uid="uid://caxvsdbo0q1fp" path="res://data/player/player_stats.tres" id="13_s83md"]
 
 [sub_resource type="Curve" id="Curve_8trdl"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1e-05, 0), 0.0, 0.0, 0, 0, Vector2(0.49815503, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -57,10 +65,13 @@ texture = ExtResource("2_8trdl")
 lifetime = 5.0
 process_material = SubResource("ParticleProcessMaterial_1qjuf")
 
-[node name="GameArea" type="TileMapLayer" parent="." unique_id=1753252463]
+[node name="GameArea" type="TileMapLayer" parent="." unique_id=1753252463 node_paths=PackedStringArray("unit_grid", "tile_highlighter")]
 position = Vector2(160, 32)
 tile_map_data = PackedByteArray("AAABAAAAAAADAAwAAAABAAIAAAAAAAwAAAAAAAEAAAAAAAwAAAABAAQAAAABAAwAAAAAAAMAAAAAAAwAAAAAAAUAAAAAAAwAAAABAAYAAAAAAAwAAAACAAEAAAAAAAwAAAACAAMAAAAAAAwAAAACAAUAAAAAAAwAAAADAAAAAAAAAAwAAAADAAIAAAAAAAwAAAADAAQAAAAAAAwAAAADAAYAAAADAAwAAAAEAAEAAAAAAAwAAAAEAAMAAAAAAAwAAAAEAAUAAAAAAAwAAAAFAAAAAAAAAAwAAAAFAAIAAAABAAwAAAAFAAQAAAAAAAwAAAAFAAYAAAAAAAwAAAAGAAEAAAAAAAwAAAAGAAMAAAAAAAwAAAAGAAUAAAAAAAwAAAAHAAAAAAAAAAwAAAAHAAIAAAAAAAwAAAAHAAQAAAAAAAwAAAAHAAYAAAABAAwAAAAIAAEAAAACAAwAAAAIAAMAAAAAAAwAAAAIAAUAAAADAAwAAAAJAAAAAAAAAAwAAAAJAAIAAAAAAAwAAAAJAAQAAAAAAAwAAAAJAAYAAAAAAAwAAAA=")
 tile_set = ExtResource("1_1qjuf")
+script = ExtResource("4_jx0ua")
+unit_grid = NodePath("ArenaUnitGrid")
+tile_highlighter = NodePath("TileHighlighter")
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
@@ -75,10 +86,19 @@ tile_set = ExtResource("1_1qjuf")
 [node name="ArenaUnitGrid" parent="GameArea" unique_id=10334246 instance=ExtResource("4_asdgj")]
 grid_size = Vector2i(4, 7)
 
-[node name="Bench" type="TileMapLayer" parent="." unique_id=982591963]
+[node name="TileHighlighter" parent="GameArea" unique_id=586429274 node_paths=PackedStringArray("play_area", "highlight_layer") instance=ExtResource("6_u52cf")]
+enabled = false
+play_area = NodePath("..")
+highlight_layer = NodePath("../Highlight")
+tile = Vector2i(3, 0)
+
+[node name="Bench" type="TileMapLayer" parent="." unique_id=982591963 node_paths=PackedStringArray("unit_grid", "tile_highlighter")]
 position = Vector2(160, 320)
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAsAAAABAAAAAAAAAAcAAAACAAAAAAAAAAsAAAADAAAAAAAAAAcAAAAEAAAAAAAAAAsAAAAFAAAAAAAAAAcAAAAGAAAAAAAAAAsAAAAHAAAAAAAAAAcAAAAIAAAAAAAAAAsAAAAJAAAAAAAAAAcAAAA=")
 tile_set = ExtResource("1_1qjuf")
+script = ExtResource("4_jx0ua")
+unit_grid = NodePath("BenchUnitGrid")
+tile_highlighter = NodePath("TileHighlighter")
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
@@ -88,5 +108,34 @@ tile_set = ExtResource("1_1qjuf")
 [node name="BenchUnitGrid" parent="Bench" unique_id=976804309 instance=ExtResource("4_asdgj")]
 grid_size = Vector2i(10, 1)
 
+[node name="TileHighlighter" parent="Bench" unique_id=1513197794 node_paths=PackedStringArray("play_area", "highlight_layer") instance=ExtResource("6_u52cf")]
+enabled = false
+play_area = NodePath("..")
+highlight_layer = NodePath("../Highlight")
+tile = Vector2i(3, 0)
+
 [node name="Unit" parent="." unique_id=1018564615 instance=ExtResource("4_aj7ud")]
 position = Vector2(160, 320)
+
+[node name="Unit2" parent="." unique_id=1373736789 instance=ExtResource("4_aj7ud")]
+position = Vector2(160, 128)
+stats = ExtResource("8_6w4xk")
+
+[node name="Unit3" parent="." unique_id=887403785 instance=ExtResource("4_aj7ud")]
+position = Vector2(192, 128)
+stats = ExtResource("9_2ml6w")
+
+[node name="UnitMover" parent="." unique_id=1303263646 node_paths=PackedStringArray("game_area", "bench_area") instance=ExtResource("8_ii07k")]
+unique_name_in_owner = true
+game_area = NodePath("../GameArea")
+bench_area = NodePath("../Bench")
+
+[node name="UnitSpawner" parent="." unique_id=43318199 node_paths=PackedStringArray("game_area", "bench_area") instance=ExtResource("11_xgbxb")]
+unique_name_in_owner = true
+game_area = NodePath("../GameArea")
+bench_area = NodePath("../Bench")
+
+[node name="SellPortal" parent="." unique_id=588249361 instance=ExtResource("12_vmsrg")]
+unique_name_in_owner = true
+position = Vector2(64, 288)
+player_stats = ExtResource("13_s83md")

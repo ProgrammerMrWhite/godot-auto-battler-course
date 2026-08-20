@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="UnitStats" format=3 uid="uid://5taogv7rsa6u"]
+
+[ext_resource type="Script" uid="uid://c0nuf7lqomgfw" path="res://data/units/unit_stats.gd" id="1_hcxx8"]
+
+[resource]
+script = ExtResource("1_hcxx8")
+name = "弓箭手"
+skin_coordinates = Vector2i(2, 0)
+metadata/_custom_type_script = "uid://c0nuf7lqomgfw"

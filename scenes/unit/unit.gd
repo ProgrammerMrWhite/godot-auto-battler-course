@@ -3,6 +3,9 @@ extends Area2D
 class_name Unit
 ## 单位
 
+## 快速出售信号
+signal quick_sell_pressed
+
 ## 单位属性
 @export var stats: UnitStats: set = set_stats
 
@@ -13,6 +16,7 @@ class_name Unit
 @onready var velocity_based_rotation: VelocityBasedRotation = $VelocityBasedRotation
 @onready var outline_highlighter: OutlineHighlighter = $OutlineHighlighter
 
+var is_hovered := false
 
 func set_stats(v):
 	stats = v
@@ -29,11 +33,16 @@ func _ready() -> void:
 		drag_and_drop.drag_canceled.connect(_on_drag_canceled)
 		drag_and_drop.drag_started.connect(_on_drag_started)
 
+func _input(event: InputEvent) -> void:
+	if is_hovered and event.is_action_pressed("quick_sell"):
+		quick_sell_pressed.emit()
+
 func _on_mouse_entered() -> void:
 	if drag_and_drop.is_dragging: return
 	
 	outline_highlighter.show_highlight()
 	z_index = 1
+	is_hovered = true
 
 
 func _on_mouse_exited() -> void:
@@ -41,6 +50,7 @@ func _on_mouse_exited() -> void:
 	
 	outline_highlighter.clear_highlight()
 	z_index = 0
+	is_hovered = false
 
 
 func _on_drag_started():

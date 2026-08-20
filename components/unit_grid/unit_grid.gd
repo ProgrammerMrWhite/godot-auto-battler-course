@@ -16,6 +16,12 @@ func add_unit(tile: Vector2i, unit: Node):
 	units[tile] = unit
 	unit_grid_changed.emit()
 
+func remove_unit(tile: Vector2i):
+	var unit := units[tile] as Node
+	if unit:
+		units[tile] = null
+		unit_grid_changed.emit()
+
 ## 指定瓦片位置是否占用
 func is_tile_occupied(tile: Vector2i) -> bool:
 	return units[tile] != null

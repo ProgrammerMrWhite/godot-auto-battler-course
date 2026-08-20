@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="UnitStats" format=3 uid="uid://vjevht8i2i3n"]
+
+[ext_resource type="Script" uid="uid://c0nuf7lqomgfw" path="res://data/units/unit_stats.gd" id="1_uot7a"]
+
+[resource]
+script = ExtResource("1_uot7a")
+name = "大剑"
+rarity = 2
+gold_cost = 3
+skin_coordinates = Vector2i(4, 2)
+metadata/_custom_type_script = "uid://c0nuf7lqomgfw"
