@@ -1,0 +1,156 @@
+[gd_scene format=3 uid="uid://vfcrs6k127si"]
+
+[ext_resource type="Script" uid="uid://b03hnldytqaxi" path="res://scenes/unit_card/unit_card.gd" id="1_2ee4v"]
+[ext_resource type="FontFile" uid="uid://8di0jvr25vat" path="res://assets/font/m5x7.ttf" id="1_efctb"]
+[ext_resource type="Texture2D" uid="uid://c4awhqfup7o2k" path="res://assets/sprites/gold.png" id="2_2ee4v"]
+[ext_resource type="Resource" uid="uid://caxvsdbo0q1fp" path="res://data/player/player_stats.tres" id="2_2yriv"]
+[ext_resource type="Texture2D" uid="uid://cx1ivjobggp8n" path="res://assets/sprites/rogues.png" id="3_8ee35"]
+[ext_resource type="Resource" uid="uid://5taogv7rsa6u" path="res://data/units/弓箭手.tres" id="3_27mlq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_t54s5"]
+line_spacing = 0.0
+font = ExtResource("1_efctb")
+font_size = 10
+font_color = Color(0.6, 0.8627451, 1, 0.7294118)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t54s5"]
+bg_color = Color(0.07058824, 0.2901961, 0.18039216, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2rl8t"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.07058824, 0.2901961, 0.18039216, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t54s5"]
+atlas = ExtResource("3_8ee35")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_imy7c"]
+bg_color = Color(0.033853274, 0.03385329, 0.033853233, 1)
+
+[node name="UnitCard" type="Button" unique_id=812017264]
+custom_minimum_size = Vector2(80, 52)
+offset_right = 8.0
+offset_bottom = 8.0
+focus_mode = 0
+script = ExtResource("1_2ee4v")
+player_stats = ExtResource("2_2yriv")
+unit_stats = ExtResource("3_27mlq")
+
+[node name="Background" type="ColorRect" parent="." unique_id=647893415]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0.08235294, 0.1254902, 1)
+
+[node name="Traits" type="Label" parent="Background" unique_id=1007388404]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 23.0
+offset_bottom = 31.0
+text = "维京
+战士"
+label_settings = SubResource("LabelSettings_t54s5")
+
+[node name="Bottom" type="Panel" parent="." unique_id=893795951]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 18)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_t54s5")
+
+[node name="MarginContainer" type="MarginContainer" parent="Bottom" unique_id=1144120006]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_right = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Bottom/MarginContainer" unique_id=1939645629]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="UnitName" type="Label" parent="Bottom/MarginContainer/HBoxContainer" unique_id=153971061]
+unique_name_in_owner = true
+layout_mode = 2
+text = "战士"
+
+[node name="GoldContainer" type="HBoxContainer" parent="Bottom/MarginContainer/HBoxContainer" unique_id=883667941]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
+alignment = 2
+
+[node name="GoldIcon" type="TextureRect" parent="Bottom/MarginContainer/HBoxContainer/GoldContainer" unique_id=1843776165]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("2_2ee4v")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="GoldCost" type="Label" parent="Bottom/MarginContainer/HBoxContainer/GoldContainer" unique_id=1037413884]
+unique_name_in_owner = true
+layout_mode = 2
+text = "5"
+
+[node name="Border" type="Panel" parent="." unique_id=373592512]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2rl8t")
+
+[node name="UnitIcon" type="TextureRect" parent="." unique_id=1222181907]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 4.0
+offset_right = 36.0
+offset_bottom = 32.0
+grow_horizontal = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_t54s5")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="EmptyPlaceholder" type="Panel" parent="." unique_id=706009518]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_imy7c")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]
