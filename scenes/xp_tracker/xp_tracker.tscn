@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://bm8q14l8c0273"]
+
+[ext_resource type="Script" uid="uid://7gsepapuhxkn" path="res://scenes/xp_tracker/xp_tracker.gd" id="1_ft5t8"]
+[ext_resource type="FontFile" uid="uid://8di0jvr25vat" path="res://assets/font/m5x7.ttf" id="1_sgy4l"]
+[ext_resource type="Resource" uid="uid://caxvsdbo0q1fp" path="res://data/player/player_stats.tres" id="2_htao7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t54s5"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2rl8t"]
+bg_color = Color(0.20154423, 0.64956325, 0.8450269, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_t54s5"]
+font = ExtResource("1_sgy4l")
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 0.8980392)
+
+[node name="XPTracker" type="VBoxContainer" unique_id=755426637]
+custom_minimum_size = Vector2(70, 28)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -570.0
+offset_bottom = -332.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+script = ExtResource("1_ft5t8")
+player_stats = ExtResource("2_htao7")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=935279398]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_t54s5")
+theme_override_styles/fill = SubResource("StyleBoxFlat_2rl8t")
+value = 60.0
+show_percentage = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1174895837]
+layout_mode = 2
+
+[node name="XPLabel" type="Label" parent="HBoxContainer" unique_id=561842568]
+unique_name_in_owner = true
+layout_mode = 2
+text = "99/99"
+label_settings = SubResource("LabelSettings_t54s5")
+
+[node name="LevelLabel" type="Label" parent="HBoxContainer" unique_id=992013242]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Lvl: 1"
+label_settings = SubResource("LabelSettings_t54s5")
+horizontal_alignment = 2

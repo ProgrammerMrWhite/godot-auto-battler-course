@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="UnitPool" format=3 uid="uid://owso5wpuhjvf"]
+
+[ext_resource type="Script" uid="uid://c0nuf7lqomgfw" path="res://data/units/unit_stats.gd" id="1_mc54o"]
+[ext_resource type="Resource" uid="uid://5taogv7rsa6u" path="res://data/units/弓箭手.tres" id="2_mht32"]
+[ext_resource type="Script" uid="uid://dbn5vriimauh8" path="res://data/unit_pool/unit_pool.gd" id="2_qbk8p"]
+[ext_resource type="Resource" uid="uid://vjevht8i2i3n" path="res://data/units/大剑.tres" id="3_l4vv1"]
+[ext_resource type="Resource" uid="uid://bw8c4c5lt8ani" path="res://data/units/战士.tres" id="4_2sl0h"]
+
+[resource]
+script = ExtResource("2_qbk8p")
+available_units = Array[ExtResource("1_mc54o")]([ExtResource("2_mht32"), ExtResource("3_l4vv1"), ExtResource("4_2sl0h")])
+metadata/_custom_type_script = "uid://dbn5vriimauh8"

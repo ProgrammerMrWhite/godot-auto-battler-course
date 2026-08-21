@@ -14,9 +14,11 @@ font_size = 10
 font_color = Color(0.6, 0.8627451, 1, 0.7294118)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t54s5"]
+resource_local_to_scene = true
 bg_color = Color(0.07058824, 0.2901961, 0.18039216, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2rl8t"]
+resource_local_to_scene = true
 bg_color = Color(0.6, 0.6, 0.6, 0)
 border_width_left = 2
 border_width_top = 2
@@ -25,6 +27,7 @@ border_width_bottom = 2
 border_color = Color(0.07058824, 0.2901961, 0.18039216, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t54s5"]
+resource_local_to_scene = true
 atlas = ExtResource("3_8ee35")
 region = Rect2(0, 0, 32, 32)
 

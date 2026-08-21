@@ -32,6 +32,8 @@ const RARITY_COLORS := {
 @export var gold_cost := 1
 ## 单位级别
 @export_range(1, 3) var tier := 1 : set = _set_tier
+## 池计数
+@export var pool_count := 5
 
 
 @export_category("视觉效果")
